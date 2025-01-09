@@ -1,0 +1,29 @@
+<!-- wp:template-part {"slug":"header-fixednav"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0"}}}} -->
+<main class="wp-block-group" style="margin-top:0">
+	<!-- wp:post-content {"lock":{"move":false,"remove":true},"layout":{"type":"constrained"}} /-->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer"} /-->
+
+<script>
+  const fixednav = document.querySelector('.fixednav');
+  let lastScrollTop = 0;
+
+  const handleScroll = () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (Math.abs(scrollTop - lastScrollTop) >= 20) {
+      if (scrollTop > lastScrollTop) {
+        fixednav.classList.add('scroll_hidden');
+        fixednav.classList.add('scrolledbefore');
+      } else {
+        fixednav.classList.remove('scroll_hidden');
+      }
+      lastScrollTop = scrollTop;
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+</script>
