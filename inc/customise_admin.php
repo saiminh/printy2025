@@ -68,6 +68,36 @@ function printy_override_admin_bar_css() {
       .interface-interface-skeleton__content:has( + .interface-interface-skeleton__sidebar div) .editor-styles-wrapper{
         --wp--preset--spacing--global-wide-size: clamp(clamp(30px, 5vw, 50px), calc( (100% - 1100px) / 2  ), 100%);
       }
+
+      tr.iedit {
+        background-color: #F9F9F9!important;
+        border-bottom: 1px solid #000!important;
+        & > * {
+          border-bottom: 1px solid #DDD;
+        }
+      }
+      tr.iedit.level-0:has(+ tr.iedit.level-1),
+      tr.iedit.level-1:has(+ tr.iedit.level-2) {
+        & > * {
+          border-bottom: none;
+        }
+      } 
+      tr.iedit.level-1, tr.iedit.level-2 {
+        background-color: #FFFFFF;
+        & .title {
+          position: relative;
+          /* &:before {
+            content: '*';
+            display: inline-block;
+            position: absolute;
+            left: 1em;
+          } */
+          padding-left: 2rem;
+          & a.row-title {
+            font-weight: 400;
+          }
+        }
+      }
     </style>
   <?php }
 }
