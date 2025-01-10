@@ -81,8 +81,9 @@ add_action( 'admin_head', 'printy_override_admin_bar_css' );
 add_action('admin_init', 'printy_remove_menus');
 function printy_remove_menus(){
   // Hide for everyone but admin and simon, just to not confuse the client
-    if ( wp_get_current_user()->user_login !== 'simon' && wp_get_current_user()->user_login !== 'admin' ) {
+    if ( wp_get_current_user()->user_login !== 'simon' && wp_get_current_user()->user_login !== 'admins' ) {
       remove_menu_page( 'wppusher' );
       remove_menu_page( 'WP-Optimize' );
+      remove_menu_page( 'plugins.php' );
     }
 };
