@@ -77,7 +77,9 @@ function printy_override_admin_bar_css() {
         }
       }
       tr.iedit.level-0:has(+ tr.iedit.level-1),
-      tr.iedit.level-1:has(+ tr.iedit.level-2) {
+      tr.iedit.level-1:has(+ tr.iedit.level-1),
+      tr.iedit.level-1:has(+ tr.iedit.level-2),
+      tr.iedit.level-2:has(+ tr.iedit.level-2) {
         & > * {
           border-bottom: none;
         }
