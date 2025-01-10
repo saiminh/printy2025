@@ -118,6 +118,5 @@ function printy_remove_menus(){
     if ( wp_get_current_user()->user_login !== 'simon' && wp_get_current_user()->user_login !== 'admins' ) {
       remove_menu_page( 'wppusher' );
       remove_menu_page( 'WP-Optimize' );
-      remove_menu_page( 'plugins.php' );
     }
 };
