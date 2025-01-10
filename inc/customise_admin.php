@@ -71,9 +71,11 @@ function printy_override_admin_bar_css() {
 
       tr.iedit {
         background-color: #F9F9F9!important;
-        border-bottom: 1px solid #000!important;
+        &:hover {
+          background-color:rgb(234, 246, 255)!important;
+        }
         & > * {
-          border-bottom: 1px solid #DDD;
+          border-bottom: 1px solid #DDDDEE;
         }
       }
       tr.iedit.level-0:has(+ tr.iedit.level-1),
