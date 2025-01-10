@@ -1,10 +1,10 @@
 <?php
 /**
- * Title: Header
+ * Title: Navigationsleiste
  * Slug: printy2025/header
  * Categories: header
  * Block Types: core/template-part/header
- * Description: Header with site title and navigation.
+ * Description: Header with site title and navigation, overlays the first page block.
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
@@ -14,16 +14,14 @@
  $langs_array = pll_the_languages( array( 'raw' => 1 ) );
 
 ?>
-<!-- wp:group {
-  "align":"full",
-  "layout":{"type":"default"}
-} -->
-<div class="wp-block-group alignfull">
+<!-- wp:group {"align":"full","className":"fixednav","style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"accent-1","textColor":"base","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull fixednav has-base-color has-accent-1-background-color has-text-color has-background has-link-color">
   
   <!-- wp:group {
     "layout":{"type":"constrained"}
   } -->
   <div class="wp-block-group">
+    
     
     <!-- wp:group {
       "align":"wide",
@@ -44,7 +42,7 @@
       } -->
       <figure class="wp-block-image size-full is-resized">
         <a href="/">
-          <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/printy_logo_text.svg" alt="<?php esc_attr_e( 'Printy logo', 'printy2025' ); ?>" class="wp-image-32" style="width:80px"/>
+          <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/printy_logo_text_white.svg" alt="<?php esc_attr_e( 'Printy logo', 'printy2025' ); ?>" class="wp-image-32" style="width:80px"/>
         </a>
       </figure>
       <!-- /wp:image -->
@@ -63,24 +61,25 @@
       } -->
       <div class="wp-block-group">
         
-        <!-- wp:navigation {
-          "textColor":"accent-1",
-          "overlayTextColor":"contrast",
-          "style":{
-            "typography":{
-              "fontStyle":"normal",
-              "fontWeight":"500"
-            }
-          },
-          "layout":{
-            "type":"flex",
-            "justifyContent":"left",
-            "flexWrap":"wrap"
-          }
-        } /-->
+        <!-- wp:group {"metadata":{"name":"Navigation DE"},"className":"navigation_german","layout":{"type":"constrained"}} -->
+        <div class="wp-block-group navigation_german">
+          
+          <!-- wp:navigation {"ref":1239} /-->
+        
+        </div><!-- /wp:group -->
+
+        <!-- wp:group {"metadata":{"name":"Navigation ENG"},"className":"navigation_english","layout":{"type":"constrained"}} -->
+        <div class="wp-block-group navigation_english">
+          
+          <!-- wp:navigation {"ref":1239,"style":{"typography":{"fontStyle":"normal","fontWeight":"500"}},"layout":{"type":"flex","justifyContent":"left","flexWrap":"wrap"}} /-->
+        
+        </div><!-- /wp:group -->
 
         <!-- wp:paragraph { 
-         "className" : "lang-switcher"
+          "metadata":{
+            "name":"Language Switcher"
+          },
+          "className" : "lang-switcher"
         } -->
         <p class="lang-switcher">
           <?php foreach ($langs_array as $lang) : ?>
@@ -96,5 +95,3 @@
   </div><!-- /wp:group -->
 
 </div><!-- /wp:group -->
-
-

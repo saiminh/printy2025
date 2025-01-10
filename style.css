@@ -83,18 +83,16 @@ html, body, * {
   outline: 0px solid transparent;
 }
 .wp-block-button__link:hover {
-  transform: translate(3px, 3px);
+  transform: translate(-3px, -3px);
   box-shadow: 
-    var(--wp--preset--color--accent-2) -.5px -.5px 0 0, 
-    var(--wp--preset--color--accent-2) -1px -1px 0 0, 
-    var(--wp--preset--color--accent-2) -1.5px -1.5px 0 0, 
-    var(--wp--preset--color--accent-2) -2px -2px 0 0, 
-    var(--wp--preset--color--accent-2) -2.5px -2.5px 0 0, 
-    var(--wp--preset--color--accent-2) -3px -3px 0 0, 
-    var(--wp--preset--color--accent-2) -3.5px -3.5px 0 0, 
-    var(--wp--preset--color--accent-2) -4px -4px 0 0,
-    var(--wp--preset--color--accent-2) -4.5px -4.5px 0 0, 
-    var(--wp--preset--color--accent-1) -5px -5px 5px 0;
+    var(--wp--preset--color--contrast) .5px .5px 0 0, 
+    var(--wp--preset--color--contrast) 1px 1px 0 0, 
+    var(--wp--preset--color--contrast) 1.5px 1.5px 0 0, 
+    var(--wp--preset--color--contrast) 2px 2px 0 0, 
+    var(--wp--preset--color--contrast) 2.5px 2.5px 0 0, 
+    var(--wp--preset--color--contrast) 3px 3px 0 0, 
+    var(--wp--preset--color--contrast) 3.5px 3.5px 0 0, 
+    var(--wp--preset--color--contrast) 4px 4px 0 0;
 }
 .wp-block-button__link:active {
   transform: translate(0, 0);
@@ -116,6 +114,30 @@ html, body, * {
     currentColor 3px 3px 0 0, 
     currentColor 3.5px 3.5px 0 0, 
     currentColor 4px 4px 0 0;
+}
+.has-contrast-background-color.wp-block-button__link:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 
+    var(--wp--preset--color--accent-7) .5px .5px 0 0, 
+    var(--wp--preset--color--accent-7) 1px 1px 0 0, 
+    var(--wp--preset--color--accent-7) 1.5px 1.5px 0 0, 
+    var(--wp--preset--color--accent-7) 2px 2px 0 0, 
+    var(--wp--preset--color--accent-7) 2.5px 2.5px 0 0, 
+    var(--wp--preset--color--accent-7) 3px 3px 0 0, 
+    var(--wp--preset--color--accent-7) 3.5px 3.5px 0 0, 
+    var(--wp--preset--color--accent-7) 4px 4px 0 0;
+}
+.has-accent-1-background-color.wp-block-button__link:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 
+    var(--wp--preset--color--accent-3) .5px .5px 0 0, 
+    var(--wp--preset--color--accent-3) 1px 1px 0 0, 
+    var(--wp--preset--color--accent-3) 1.5px 1.5px 0 0, 
+    var(--wp--preset--color--accent-3) 2px 2px 0 0, 
+    var(--wp--preset--color--accent-3) 2.5px 2.5px 0 0, 
+    var(--wp--preset--color--accent-3) 3px 3px 0 0, 
+    var(--wp--preset--color--accent-3) 3.5px 3.5px 0 0, 
+    var(--wp--preset--color--accent-3) 4px 4px 0 0;
 }
 /* .wp-block-button__link.has-base-color.has-accent-1-background-color:hover {
   box-shadow: 
@@ -159,6 +181,7 @@ footer.wp-block-template-part {
     .wp-block-navigation__responsive-container.is-menu-open {
       padding-top: 3rem;
       margin-top: -1rem!important;
+      padding-bottom: 5rem;
     }
     .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {
       background-color: var(--wp--preset--color--accent-1);

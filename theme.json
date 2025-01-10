@@ -6,20 +6,6 @@
 				"page"
 			],
 			"title": "Page No Title"
-		},
-		{
-			"name": "page-header-overlay",
-			"postTypes": [
-				"page"
-			],
-			"title": "Page with Header Overlay"
-		},
-		{
-			"name": "page-header-overlay-white",
-			"postTypes": [
-				"page"
-			],
-			"title": "Page with Header Overlay (White)"
 		}
 	],
 	"settings": {

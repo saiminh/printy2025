@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Hero with Grid Design and White Background for Text
+ * Title: Kopf mit Raster und Weissem Hintergrund
  * Slug: printy2025/hero-home-grid-white
  * Categories: banner
- * Description: A hero banner for the homepage.
+ * Description: Zur Beschreibung und Bewerbung der Seiteninhalte.
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
