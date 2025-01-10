@@ -59,6 +59,27 @@ if ( ! function_exists( 'printy2025_enqueue_styles' ) ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'printy2025_enqueue_styles' );
 
+// Enqueues script.js and makes it deferred.
+if ( ! function_exists( 'printy2025_enqueue_scripts' ) ) :
+  /**
+   * Enqueues script.js and makes it deferred.
+   *
+   * @since printy2025 1.0
+   *
+   * @return void
+   */
+  function printy2025_enqueue_scripts() {
+    wp_enqueue_script(
+      'printy2025-script',
+      get_parent_theme_file_uri( 'js/scripts.min.js' ),
+      array(),
+      wp_get_theme()->get( 'Version' ),
+      true // Enqueue the script in the footer.
+    );
+  }
+endif;
+add_action( 'wp_enqueue_scripts', 'printy2025_enqueue_scripts' );
+
 // Registers custom block styles.
 if ( ! function_exists( 'printy2025_block_styles' ) ) :
 	/**
@@ -156,6 +177,12 @@ if ( ! function_exists( 'printy2025_format_binding' ) ) :
 		}
 	}
 endif;
+
+// Remove Posts as we don't need them atm
+function post_remove () { 
+   remove_menu_page('edit.php');
+}
+add_action('admin_menu', 'post_remove'); 
 
 // Customise admin area
 require get_template_directory() . '/inc/customise_admin.php';
