@@ -23,6 +23,7 @@ add_action( 'wp_before_admin_bar_render', 'remove_comments' );
 // Remove comments from menu
 function prefix_remove_comments_tl() {
   remove_menu_page( 'edit-comments.php' );
+  remove_menu_page( 'cost_calculator_builder' );
 }
 add_action( 'admin_menu', 'prefix_remove_comments_tl' );
 
@@ -75,3 +76,13 @@ function printy_override_admin_bar_css() {
 add_action( 'admin_head', 'printy_override_admin_bar_css' );
 // on frontend area
 // add_action( 'wp_head', 'printy_override_admin_bar_css' );
+
+// Remove menu items for notmes
+add_action('admin_init', 'printy_remove_menus');
+function printy_remove_menus(){
+  // Hide for everyone but admin and simon, just to not confuse the client
+    if ( wp_get_current_user()->user_login !== 'simon' && wp_get_current_user()->user_login !== 'admin' ) {
+      remove_menu_page( 'wppusher' );
+      remove_menu_page( 'WP-Optimize' );
+    }
+};
