@@ -192,3 +192,9 @@ require get_template_directory() . '/inc/defer_js.php';
 
 // Custom image sizes
 require get_template_directory() . '/inc/custom_img_sizes.php';
+
+// Load theme text domain for translations
+function printy2025_load_theme_textdomain() {
+    load_theme_textdomain('printy2025', get_template_directory() . '/languages');
+}
+add_action('after_setup_theme', 'printy2025_load_theme_textdomain');

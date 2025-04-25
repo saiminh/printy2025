@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: printy2025\n"
+"POT-Creation-Date: 2025-04-25 12:00+0100\n"
+"PO-Revision-Date: 2025-04-25 12:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: patterns/template-single-offset.php:40
+msgctxt "Prefix before the post date block."
+msgid "Published on"
+msgstr "Veröffentlicht am"
+
+#: patterns/hidden-sidebar.php:38
+#: patterns/template-query-loop.php:49
+msgctxt "Message explaining that there are no results returned from a search."
+msgid "Sorry, but nothing was found. Please try a search with different keywords."
+msgstr "Leider konnte ich zu diesem Suchbegriff nichts finden. Bitte versuchen Sie eine Suche mit anderen Stichwörtern."
+
+#: patterns/text-faqs.php:21
+msgctxt "Heading of the FAQs pattern."
+msgid "Frequently Asked Questions"
+msgstr "Häufig gestellte Fragen"
+
+#: patterns/text-faqs.php:31
+msgctxt "Question in the FAQs pattern."
+msgid "What is The Stories Book about?"
+msgstr "Worum geht es in The Stories Book?"
+
+#: patterns/text-faqs.php:35
+#: patterns/text-faqs.php:51
+#: patterns/text-faqs.php:71
+#: patterns/text-faqs.php:87
+msgctxt "Answer in the FAQs pattern."
+msgid "This exquisite compilation showcases a diverse array of photographs that capture the essence of different eras and cultures, reflecting the unique styles and perspectives of each artist."
+msgstr "Diese exquisite Zusammenstellung präsentiert eine vielfältige Sammlung von Fotografien, die das Wesen verschiedener Epochen und Kulturen einfangen und die einzigartigen Stile und Perspektiven jedes Künstlers widerspiegeln."
+
+#: patterns/text-faqs.php:47
+msgctxt "Question in the FAQs pattern."
+msgid "How much does The Stories Book cost?"
+msgstr "Wie viel kostet The Stories Book?"
+
+#: patterns/text-faqs.php:67
+msgctxt "Question in the FAQs pattern."
+msgid "When will The Stories Book be released?"
+msgstr "Wann wird The Stories Book veröffentlicht?"
+
+#: patterns/text-faqs.php:83
+msgctxt "Question in the FAQs pattern."
+msgid "Are signed copies available?"
+msgstr "Sind signierte Exemplare erhältlich?"
+
+#: patterns/hidden-search.php:14
+msgctxt "Search form label."
+msgid "Search"
+msgstr "Suche"
+
+#: patterns/hidden-search.php:14
+msgctxt "Search input field placeholder text."
+msgid "Type here..."
+msgstr "Hier eingeben..."
+
+#: patterns/hidden-search.php:14
+msgctxt "Button text. Verb."
+msgid "Search"
+msgstr "Suchen"
+
+#: patterns/hidden-404.php:32
+msgctxt "404 error message"
+msgid "Page not found"
+msgstr "Seite nicht gefunden"
+
+#: patterns/hidden-404.php:36
+msgctxt "404 error message"
+msgid "The page you are looking for doesn't exist, or it has been moved. Please try searching using the form below."
+msgstr "Die gesuchte Seite existiert nicht oder wurde umbenannt. Bitte versuchen Sie es mit der untenstehenden Suchfunktion."
