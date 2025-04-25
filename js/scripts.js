@@ -96,4 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 200);
 
   checkCcbLoaded;
+
+  
+  
+});
+
+const searchButton = document.querySelector('a[href="#search"]');  
+const searchInput = document.querySelector('#search input[type="search"]');
+
+searchButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log('search button clicked');
+  searchInput.focus();
 });
