@@ -11,7 +11,15 @@
  * @since printy2025 1.0
  */
 
- $langs_array = pll_the_languages( array( 'raw' => 1 ) );
+ $langs_array = pll_the_languages(array(
+  'raw' => 1,
+  'hide_if_no_translation' => 0, // Don't hide links with no translations
+  'force_home' => 0,            // Don't force the home page
+  'echo' => 0                   // Don't echo, just return
+));
+echo '<!-- Debug: ';
+print_r($langs_array);
+echo ' -->';
 
 ?>
 <!-- wp:group {"align":"full","className":"fixednav","style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"accent-1","textColor":"base","layout":{"type":"default"}} -->
