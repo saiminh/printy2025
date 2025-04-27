@@ -18,6 +18,7 @@
   'echo' => 0                   // Don't echo, just return
 ));
 echo '<!-- Debug: ';
+pll_the_languages();
 print_r($langs_array);
 echo ' -->';
 
@@ -106,12 +107,6 @@ echo ' -->';
         </p>
         <!-- /wp:paragraph -->
 
-        <div style="display:none">
-          <ul>
-            <?php pll_the_languages(); ?>
-          </ul>
-        </div>
-        
       </div><!-- /wp:group -->
       
     </div><!-- /wp:group -->
