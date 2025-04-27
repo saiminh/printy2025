@@ -105,6 +105,12 @@ echo ' -->';
           <?php endforeach; ?>
         </p>
         <!-- /wp:paragraph -->
+
+        <div style="display:none">
+          <ul>
+            <?php pll_the_languages(); ?>
+          </ul>
+        </div>
         
       </div><!-- /wp:group -->
       
