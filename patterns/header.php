@@ -94,18 +94,16 @@ echo ' -->';
           </div>
         <!-- /wp:outermost/icon-block -->
 
-        <!-- wp:paragraph { 
+        <!-- wp:list {
           "metadata":{
             "name":"Language Switcher"
           },
-          "className" : "lang-switcher"
+          "className":"lang-switcher"
         } -->
-        <p class="lang-switcher">
-          <?php foreach ($langs_array as $lang) : ?>
-            <a class="lang_<?php esc_html_e( $lang['slug']); ?>" href="<?php esc_html_e( $lang['url'] ); ?>"><?php esc_html_e( $lang['name'] ); ?></a>
-          <?php endforeach; ?>
-        </p>
-        <!-- /wp:paragraph -->
+        <ul class="wp-block-list lang-switcher"><!-- wp:list-item -->
+          <?php pll_the_languages(); ?>
+        </ul>
+        <!-- /wp:list -->
 
       </div><!-- /wp:group -->
       

@@ -517,22 +517,33 @@ footer.wp-block-template-part {
 
 
 /* -------------------------- */
-/* Custom Language Switcher */
+/* Begin Language Switcher Custom */
 /* -------------------------- */
 @media (min-width: 600px) {
   .lang-switcher {
     position: relative;
     display: flex;
-    padding: 0 0 0 1rem;
+    padding: 0 0 0 2.5rem;
     width: 1.25rem;
     height: 1em;
+    list-style: none;
+    
+    & li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    & li a {
+      display: inline-block;
+      position: relative;
+    }
   
     @media (max-width: 599.9px) {
       order: -1;
       right: 1rem;
     }
   }
-  .lang_de, .lang_en {
+  .lang-switcher a[lang="de-DE"], .lang-switcher a[lang="en-GB"] {
     width: 1.25rem;
     height: 1rem;
     overflow: hidden;
@@ -557,46 +568,46 @@ footer.wp-block-template-part {
       background-repeat: no-repeat;
     }
   }
-  .lang_de:after {
+  .lang-switcher a[lang="de-DE"]:after {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24"><rect width="36" height="8" fill="black"/><rect y="8" width="36" height="8" fill="red"/><rect y="16" width="36" height="8" fill="gold"/></svg>');
   }
-  .lang_en:after {
+  .lang-switcher a[lang="en-GB"]:after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 30' width='1000' height='600'%3E%3CclipPath id='t'%3E%3Cpath d='M25,15h25v15zv15h-25zh-25v-15zv-15h25z'/%3E%3C/clipPath%3E%3Cpath d='M0,0v30h50v-30z' fill='%23012169'/%3E%3Cpath d='M0,0 50,30M50,0 0,30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0,0 50,30M50,0 0,30' clip-path='url(%23t)' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M-1 11h22v-12h8v12h22v8h-22v12h-8v-12h-22z' fill='%23C8102E' stroke='%23FFF' stroke-width='2'/%3E%3C/svg%3E");
   }
 
   html[lang="de-DE"] {
   
-    & .lang-switcher .lang_de {
+    & .lang-switcher a[lang="de-DE"] {
       opacity: 1;
       z-index: 1;
     }
-    & .lang-switcher:hover .lang_de {
+    & .lang-switcher:hover a[lang="de-DE"] {
       animation: flagout 0.3s ease forwards;
     }
-    & .lang-switcher .lang_en {
+    & .lang-switcher a[lang="en-GB"] {
       z-index: 2;
       opacity: 0;
       transform: translateX(-100%);
     }
-    & .lang-switcher:hover .lang_en {
+    & .lang-switcher:hover a[lang="en-GB"] {
       animation: flagin 0.3s ease forwards;    
     }
   }
   html[lang="en-GB"], 
   html[lang="en-US"] {
-    & .lang-switcher .lang_en {
+    & .lang-switcher a[lang="en-GB"] {
       opacity: 1;
       z-index: 1;
     }
-    & .lang-switcher:hover .lang_en {
+    & .lang-switcher:hover a[lang="en-GB"] {
       animation: flagout 0.3s ease forwards;
     }
-    & .lang-switcher .lang_de {
+    & .lang-switcher a[lang="de-DE"] {
       z-index: 2;
       opacity: 0;
       transform: translateX(-100%);
     }
-    & .lang-switcher:hover .lang_de {
+    & .lang-switcher:hover a[lang="de-DE"] {
       animation: flagin 0.3s ease forwards;    
     }
   }
@@ -634,6 +645,7 @@ footer.wp-block-template-part {
     order: -1;
     z-index: 100001;
     opacity: 0;
+    list-style: none;
   }
   .fixednav:has( .is-menu-open) .lang-switcher {
     opacity: 1;
@@ -647,13 +659,13 @@ footer.wp-block-template-part {
 
   html[lang="de-DE"] {
   
-    & .lang-switcher .lang_de {
+    & .lang-switcher a[lang="de-DE"] {
       z-index: 1;
       opacity: .75;
       border-bottom: 2px solid;
       pointer-events: none;
     }
-    & .lang-switcher .lang_en {
+    & .lang-switcher a[lang="en-GB"] {
       opacity: 1;
       z-index: 2;
       border-bottom: 2px solid transparent;
@@ -661,13 +673,13 @@ footer.wp-block-template-part {
   }
   html[lang="en-GB"], 
   html[lang="en-US"] {
-    & .lang-switcher .lang_en {
+    & .lang-switcher a[lang="en-GB"] {
       z-index: 1;
       opacity: .75;
       border-bottom: 2px solid;
       pointer-events: none;
     }
-    & .lang-switcher .lang_de {
+    & .lang-switcher a[lang="de-DE"] {
       opacity: 1;
       z-index: 2;
       border-bottom: 2px solid transparent;
