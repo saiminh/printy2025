@@ -198,3 +198,5 @@ function printy2025_load_theme_textdomain() {
     load_theme_textdomain('printy2025', get_template_directory() . '/languages');
 }
 add_action('after_setup_theme', 'printy2025_load_theme_textdomain');
+
+add_post_type_support( 'page', 'excerpt' );
