@@ -11,17 +11,6 @@
  * @since printy2025 1.0
  */
 
- $langs_array = pll_the_languages(array(
-  'raw' => 1,
-  'hide_if_no_translation' => 0, // Don't hide links with no translations
-  'force_home' => 0,            // Don't force the home page
-  'echo' => 0                   // Don't echo, just return
-));
-echo '<!-- Debug: ';
-pll_the_languages();
-print_r($langs_array);
-echo ' -->';
-
 ?>
 <!-- wp:group {"align":"full","className":"fixednav","style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"accent-1","textColor":"base","layout":{"type":"default"}} -->
 <div class="wp-block-group alignfull fixednav has-base-color has-accent-1-background-color has-text-color has-background has-link-color">
@@ -94,16 +83,26 @@ echo ' -->';
           </div>
         <!-- /wp:outermost/icon-block -->
 
-        <!-- wp:list {
+
+        <!-- wp:paragraph { 
           "metadata":{
             "name":"Language Switcher"
           },
-          "className":"lang-switcher"
+          "className" : "lang-switcher"
         } -->
-        <ul class="wp-block-list lang-switcher"><!-- wp:list-item -->
-          <?php pll_the_languages(); ?>
-        </ul>
-        <!-- /wp:list -->
+        <p class="lang-switcher">
+          <?php 
+            $langs_array = pll_the_languages(array(
+              'raw' => 1,
+              'hide_if_no_translation' => 0, // Don't hide links with no translations
+              'force_home' => 0,            // Don't force the home page
+              'echo' => 0                   // Don't echo, just return
+            )); 
+            foreach ($langs_array as $lang) : ?>
+            <a class="lang_<?php esc_html_e( $lang['slug']); ?>" href="<?php esc_html_e( $lang['url'] ); ?>"><?php esc_html_e( $lang['name'] ); ?></a>
+          <?php endforeach; ?>
+        </p>
+        <!-- /wp:paragraph -->
 
       </div><!-- /wp:group -->
       
