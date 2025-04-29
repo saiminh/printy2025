@@ -249,7 +249,7 @@ footer.wp-block-template-part {
       & .wp-block-image:before {
         animation: bgmorphback .3s ease both;
       }
-      & .wp-block-group:has( > .lang-switcher ) {
+      & .wp-block-group:has( > .wp-block-create-block-sprachenswitcher ) {
         animation: navnswitch_in .3s ease .3s both;
       }
     }
@@ -260,7 +260,7 @@ footer.wp-block-template-part {
           animation: bgmorph .3s ease both;
         }
       }
-      & .wp-block-group:has( > .lang-switcher ) {
+      & .wp-block-group:has( > .wp-block-create-block-sprachenswitcher ) {
         animation: navnswitch_out .2s ease both;
       }
     }
@@ -334,9 +334,11 @@ footer.wp-block-template-part {
     .wp-block-navigation > .wp-block-navigation-item > .wp-block-navigation-item__content {
       padding: 1rem 1.5rem;
     }
-    html[lang="de-DE"] .navigation_english {
+    html[lang="de-DE"] .navigation_english,
+    html[lang="de"] .navigation_english {
       display: none;
     }
+    html[lang="en"] .navigation_german,
     html[lang="en-US"] .navigation_german,
     html[lang="en-GB"] .navigation_german {
       display: none;

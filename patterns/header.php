@@ -11,17 +11,6 @@
  * @since printy2025 1.0
  */
 
- $langs_array = pll_the_languages(array(
-  'raw' => 1,
-  'hide_if_no_translation' => 0, // Don't hide links with no translations
-  'force_home' => 0,            // Don't force the home page
-  'echo' => 0                   // Don't echo, just return
-));
-echo '<!-- Debug: ';
-pll_the_languages();
-print_r($langs_array);
-echo ' -->';
-
 ?>
 <!-- wp:group {"align":"full","className":"fixednav","style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"accent-1","textColor":"base","layout":{"type":"default"}} -->
 <div class="wp-block-group alignfull fixednav has-base-color has-accent-1-background-color has-text-color has-background has-link-color">
@@ -106,6 +95,6 @@ echo ' -->';
 
 <!-- wp:group {"layout":{"type":"default"}} -->
 <div id="search" class="wp-block-group">
-  <!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search","buttonPosition":"no-button","placeholder":"Search"} /-->
+  <!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search","buttonPosition":"no-button","placeholder":"<?php echo esc_attr_x( 'Search...', 'Search input field placeholder text.', 'printy2025' ); ?>"} /-->
 </div>
 <!-- /wp:group -->

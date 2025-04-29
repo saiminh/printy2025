@@ -83,3 +83,8 @@ msgstr "Seite nicht gefunden"
 msgctxt "404 error message"
 msgid "The page you are looking for doesn't exist, or it has been moved. Please try searching using the form below."
 msgstr "Die gesuchte Seite existiert nicht oder wurde umbenannt. Bitte versuchen Sie es mit der untenstehenden Suchfunktion."
+
+#: patterns/header.php:98
+msgctxt "Search input field placeholder text."
+msgid "Search..."
+msgstr "Suche..."
