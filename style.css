@@ -249,7 +249,8 @@ footer.wp-block-template-part {
       & .wp-block-image:before {
         animation: bgmorphback .3s ease both;
       }
-      & .wp-block-group:has( > .wp-block-create-block-sprachenswitcher ) {
+      & .wp-block-group:has( > .wp-block-create-block-sprachenswitcher ) ,
+      & .wp-block-group:has( > .navigation_german ) {
         animation: navnswitch_in .3s ease .3s both;
       }
     }
@@ -260,8 +261,10 @@ footer.wp-block-template-part {
           animation: bgmorph .3s ease both;
         }
       }
-      & .wp-block-group:has( > .wp-block-create-block-sprachenswitcher ) {
+      & .wp-block-group:has( > .wp-block-create-block-sprachenswitcher ) ,
+      & .wp-block-group:has( > .navigation_german ) {
         animation: navnswitch_out .2s ease both;
+        pointer-events: none;
       }
     }
   }
@@ -460,19 +463,22 @@ footer.wp-block-template-part {
   /* END Submenus Mobile */
   /* BEGIN Search */
     #search {
-      margin: 1rem calc(0.5 * var(--wp--style--root--padding-right) );
+      margin: 0;
       background-color: var(--wp--preset--color--accent-1);
-      padding: 1rem;
+      padding: 0;
       border-radius: var(--borderradius);
       position: relative;
       z-index: 1000;
       opacity: 0;
+      height: 0;
       pointer-events: none;
       transform: translateY(-1rem);
-      transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: none;
 
       &:has( form input[type="search"]:focus) {
-        pointer-events: auto;
+        height: auto;
+        margin: 1rem calc(0.5 * var(--wp--style--root--padding-right) );
+        padding: 1rem;
         opacity: 1;
         transform: translateY(0);
       }
@@ -491,8 +497,12 @@ footer.wp-block-template-part {
     @media (min-width: 600px) {
       #search {
         max-width: var(--fixednav-width-extended);
-        margin: 1rem auto;
 
+        &:has( form input[type="search"]:focus) {
+          margin: 1rem auto;
+          transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
         & form input[type="search"] {
           font-size: 1.25rem;
         }
