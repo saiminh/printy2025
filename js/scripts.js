@@ -1,12 +1,15 @@
 // ------------------------------------------------------------------------
 // This is the original scripts.js file from the theme, it is not loaded on 
 // the site, we load the minimized version of this file instead
+// This file is minimized and modified by just using VSCode 'minify' command
 // ------------------------------------------------------------------------
 
 const fixednav = document.querySelector('.fixednav');
 let lastScrollTop = 0;
 
+// ------------------------------------------------------------------------
 // Scrollhandler to deal with the fixednav
+// ------------------------------------------------------------------------
 const handleScroll = () => {
   let scrollTop = window.scrollY || document.documentElement.scrollTop;
   if (Math.abs(scrollTop - lastScrollTop) >= 50) {
@@ -29,44 +32,75 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Check if ccs is on the page, if not abort
   const ccb = document.querySelector('[class*="ccb"]')
-  if(!ccb) return;
+  if(!ccb) {
+    console.log('Die Preiskalkulation ist nicht verfügbar. Bitte versuchen Sie es später erneut.');
+    return;
+  } else {
+    console.log('Die Preiskalkulation ist verfügbar.'); // for testing purposes
+  }
 
+  // utility function to convert input fields with type text to number
   function convertToNumberField(input) {
     if (input.getAttribute('type') === 'number') return;
     input.setAttribute('type', 'number');
   }
 
+  // utility function to convert all quantity fields to number fields
   function convertQuantityFields() {
-    const quantityFields = document.querySelectorAll('input[name="quantityField"]');
+    const quantityFields = document.querySelectorAll('.ccb-summary-item__value');
     quantityFields.forEach(field => {
       convertToNumberField(field);
     });
   }
 
-  // function to create mailto link of the order button
+  // utility function to create mailto link of the order button
   function createMailtoLinkFor(link) {
     // check if the calc-subtotal-list-accordion is on the page, if not alert the user and abort
-    if (!document.querySelector('.calc-subtotal-list-accordion')) {
+    if (!document.querySelector('.ccb-subtotal-wrapper')) {
+      console.log('ccb-subtotal-wrapper not found'); // for testing purposes
       const germanMessage = 'Es ist etwas schiefgelaufen, bitte kopieren Sie die Preiskalkulation und senden Sie uns eine E-Mail an online@printy.de';
       const englishMessage = 'Something went wrong, please manually copy the price calculation and send us an email to online@printy.de';
       const message = isGerman() ? germanMessage : englishMessage;
       alert( message );
       return;
     }
-    // get the items of the calc-subtotal-list-accordion and create a mailto link
+    
+    // let variable to hold the content of the mailto link
     let calcSubtotalContent = '';
+
+    // fetch calculator elements
+    const header = document.querySelector('.ccb-header-title').innerHTML.replace(/<[^>]*>/g, '');
+    const items = document.querySelectorAll('.ccb-subtotal-wrapper .ccb-summary-list__body .ccb-summary-item');
+    const totals = document.querySelector('.ccb-totals-list');
+    const totalsRows = totals.querySelectorAll('.ccb-total-row__item');
+
+    // check if calculator elements are available, if not alert the user and abort
+    if (!header || items.length === 0 || totalsRows.length === 0) {
+      console.log('Calculator elements not found'); // for testing purposes
+      return;
+    }
+    
     // get headline
-    const header = document.querySelector('.ccb-calc-heading').innerHTML.replace(/<[^>]*>/g, '');
-    calcSubtotalContent += `${header}%0A`;
+    calcSubtotalContent += `${header}%0A---%0A%0A`;
+    
     // get items
-    const items = document.querySelectorAll('.calc-subtotal-list-accordion .sub-list-item');
     items.forEach(item => {
-      const itemContent = item.innerHTML.replace(/<[^>]*>/g, '');
+      const itemTitle = item.querySelector('.ccb-summary-item__title .ccb-summary-title').innerHTML;
+      const itemValue = item.querySelector('.ccb-summary-item__value').innerHTML;
+      const itemContent = `${itemTitle}: ${itemValue}`.replace(/<[^>]*>/g, '');
       calcSubtotalContent += `${itemContent}%0A`;
     });
-    // get price
-    const price = document.querySelector('.calc-subtotal-list.totals').innerHTML.replace(/<[^>]*>/g, '') ;
-    calcSubtotalContent += `${price}%0A`;
+    
+    // get totals
+    let totalsText = '';
+    totalsRows.forEach(row => {
+      const rowTitle = row.querySelector('.ccb-total-row__name').innerHTML.replace(/<[^>]*>/g, '');
+      const rowValue = row.querySelector('.ccb-total-row__value').innerHTML.replace(/<[^>]*>/g, '');
+      totalsText += `${rowTitle}: ${rowValue}`.replace(/<[^>]*>/g, '') + '%0A';
+    });
+    calcSubtotalContent += `---%0A${totalsText}%0A`;
+
+    // get the mailto link
     link.href = `mailto:online@printy.de?subject=Anfrage%20printy.de%20Preisrechner&body=${calcSubtotalContent}`;
   }
 
@@ -79,7 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
     orderButton.style.marginTop = '1rem';
     orderButton.style.borderRadius = '.5rem';
     orderButton.style.padding = '.667em 1.33em';
-    const calcSubtotal = document.querySelector('.calc-subtotal');
+    const calcSubtotal = document.querySelector('.ccb-subtotals-block');
+    if (!calcSubtotal) {
+      console.log('calcSubtotal not found, aborting order button creation'); // for testing purposes
+      return;
+    }
     calcSubtotal.appendChild(orderButton);
     orderButton.addEventListener('click', () => {
       createMailtoLinkFor(orderButton);
@@ -88,10 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // check if ccb is loaded, if not check every 200ms, if yes create and add the order button
   const checkCcbLoaded = setInterval(() => {
-    if (window.ccbLoaded) {
+    if (document.querySelector('.ccb-app-container') && document.querySelector('.ccb-subtotals-block')) {
+      console.log('ccbLoaded is true, creating order button'); // for testing purposes
     clearInterval(checkCcbLoaded);
     convertQuantityFields()
     createOrderButton();
+    }
+    else {
+      console.log('ccbLoaded is false, checking again in 200ms'); // for testing purposes
     }
   }, 200);
 
