@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // function to create order button
   function createOrderButton() {
+    const orderButtonContainer = document.createElement('div');
+    orderButtonContainer.classList.add('wp-block-group', 'is-layout-flex');
     const orderButton = document.createElement('a');
     orderButton.textContent = isGerman() ? 'Anfragen' : 'Request order';
     orderButton.classList.add('wp-block-button__link', 'has-accent-1-background-color', 'has-text-color', 'has-background', 'has-link-color', 'wp-element-button');
@@ -118,7 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('calcSubtotal not found, aborting order button creation'); // for testing purposes
       return;
     }
-    calcSubtotal.appendChild(orderButton);
+    calcSubtotal.appendChild(orderButtonContainer);
+    orderButtonContainer.appendChild(orderButton);
     orderButton.addEventListener('click', () => {
       createMailtoLinkFor(orderButton);
     });
