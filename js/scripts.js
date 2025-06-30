@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let calcSubtotalContent = '';
 
     // fetch calculator elements
-    const header = document.querySelector('.ccb-header-title').innerHTML.replace(/<[^>]*>/g, '');
+    const header = encodeURIComponent(document.querySelector('.ccb-header-title').innerHTML.replace(/<[^>]*>/g, ''));
     const items = document.querySelectorAll('.ccb-subtotal-wrapper .ccb-summary-list__body .ccb-summary-item');
     const totals = document.querySelector('.ccb-totals-list');
     const totalsRows = totals.querySelectorAll('.ccb-total-row__item');
@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // get items
     items.forEach(item => {
-      const itemTitle = item.querySelector('.ccb-summary-item__title .ccb-summary-title').innerHTML;
-      const itemValue = item.querySelector('.ccb-summary-item__value').innerHTML;
+      const itemTitle = encodeURIComponent(item.querySelector('.ccb-summary-item__title .ccb-summary-title').innerHTML);
+      const itemValue = encodeURIComponent(item.querySelector('.ccb-summary-item__value').innerHTML);
       const itemContent = `${itemTitle}: ${itemValue}`.replace(/<[^>]*>/g, '');
       calcSubtotalContent += `${itemContent}%0A`;
     });
@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // get totals
     let totalsText = '';
     totalsRows.forEach(row => {
-      const rowTitle = row.querySelector('.ccb-total-row__name').innerHTML.replace(/<[^>]*>/g, '');
-      const rowValue = row.querySelector('.ccb-total-row__value').innerHTML.replace(/<[^>]*>/g, '');
+      const rowTitle = encodeURIComponent(row.querySelector('.ccb-total-row__name').innerHTML.replace(/<[^>]*>/g, ''));
+      const rowValue = encodeURIComponent(row.querySelector('.ccb-total-row__value').innerHTML.replace(/<[^>]*>/g, ''));
       totalsText += `${rowTitle}: ${rowValue}`.replace(/<[^>]*>/g, '') + '%0A';
     });
     calcSubtotalContent += `---%0A${totalsText}%0A`;
