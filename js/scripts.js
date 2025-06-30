@@ -53,6 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // utility function to decode HTML entities
+  function decodeHtmlEntities(str) {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = str;
+    return txt.value;
+  }
+
   // utility function to create mailto link of the order button
   function createMailtoLinkFor(link) {
     // check if the calc-subtotal-list-accordion is on the page, if not alert the user and abort
@@ -69,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let calcSubtotalContent = '';
 
     // fetch calculator elements
-    const header = encodeURIComponent(document.querySelector('.ccb-header-title').innerHTML.replace(/<[^>]*>/g, ''));
+    const header = document.querySelector('.ccb-header-title').textContent.trim();
     const items = document.querySelectorAll('.ccb-subtotal-wrapper .ccb-summary-list__body .ccb-summary-item');
     const totals = document.querySelector('.ccb-totals-list');
     const totalsRows = totals.querySelectorAll('.ccb-total-row__item');
@@ -81,27 +88,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // get headline
-    calcSubtotalContent += `${header}%0A---%0A%0A`;
+    calcSubtotalContent += `${header}\n---\n\n`;
     
     // get items
     items.forEach(item => {
-      const itemTitle = encodeURIComponent(item.querySelector('.ccb-summary-item__title .ccb-summary-title').innerHTML);
-      const itemValue = encodeURIComponent(item.querySelector('.ccb-summary-item__value').innerHTML);
-      const itemContent = `${itemTitle}: ${itemValue}`.replace(/<[^>]*>/g, '');
-      calcSubtotalContent += `${itemContent}%0A`;
+      const itemTitle = item.querySelector('.ccb-summary-item__title .ccb-summary-title').textContent.trim();
+      const itemValue = item.querySelector('.ccb-summary-item__value').textContent.trim();
+      const itemContent = `${itemTitle}: ${itemValue}`;
+      calcSubtotalContent += `${itemContent}\n`;
     });
     
     // get totals
     let totalsText = '';
     totalsRows.forEach(row => {
-      const rowTitle = encodeURIComponent(row.querySelector('.ccb-total-row__name').innerHTML.replace(/<[^>]*>/g, ''));
-      const rowValue = encodeURIComponent(row.querySelector('.ccb-total-row__value').innerHTML.replace(/<[^>]*>/g, ''));
-      totalsText += `${rowTitle}: ${rowValue}`.replace(/<[^>]*>/g, '') + '%0A';
+      const rowTitle = row.querySelector('.ccb-total-row__name').textContent.trim();
+      const rowValue = row.querySelector('.ccb-total-row__value').textContent.trim();
+      totalsText += `${rowTitle}: ${rowValue}\n`;
     });
-    calcSubtotalContent += `---%0A${totalsText}%0A`;
+    calcSubtotalContent += `---\n${totalsText}\n`;
 
     // get the mailto link
-    link.href = `mailto:online@printy.de?subject=Anfrage%20printy.de%20Preisrechner&body=${calcSubtotalContent}`;
+    link.href = `mailto:online@printy.de?subject=Anfrage%20printy.de%20Preisrechner&body=${encodeURIComponent(calcSubtotalContent)}`;
   }
 
   // function to create order button
