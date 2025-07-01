@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     calcSubtotalContent += `---\n${totalsText}\n`;
 
     // get the mailto link
-    link.href = `mailto:online@printy.de?subject=Anfrage%20printy.de%20Preisrechner&body=${encodeURIComponent(calcSubtotalContent)}`;
+    link.href = `mailto:mail@printy.de?subject=Anfrage%20printy.de%20Preisrechner&body=${encodeURIComponent(calcSubtotalContent)}`;
   }
 
   // function to create order button
